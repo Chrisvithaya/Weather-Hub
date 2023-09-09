@@ -29,3 +29,36 @@ function compare(a, b) {
     return comparison;
 }
 
+function loadCities() {
+    const savedCities = JSON.parse(localStorage.getItem('previousCities'));
+    if (savedCities) {
+        previousCities = savedCities;
+    }
+}
+
+function storeCities() {
+    localStorage.setItem('previousCities', JSON.stringify(previousCities));
+}
+
+function buildURLFromInputs(city) {
+    if (city) {
+        return `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    }
+}
+
+function buildURLFromId(id) {
+    return `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${apiKey}`;
+}
+
+function displayCities(previousCities) {
+    cityListEl.empty();
+    previousCities.splice(5);
+    let sortedCities = [...previousCities];
+    sortedCities.sort(compare);
+    sortedCities.forEach(function (location) {
+        let cityDiv = $('<div>').addClass('col-12 city');
+        let cityBtn = $('<button>').addClass('btn btn-light city-btn').text(location.city);
+        cityDiv.append(cityBtn);
+        cityListEl.append(cityDiv);
+    });
+}
