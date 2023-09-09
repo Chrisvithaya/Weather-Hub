@@ -138,7 +138,7 @@ $(document).ready(function () {
       let queryURL = buildURLFromId(previousCities[0].id);
       searchWeather(queryURL);
     } else {
-      let queryURL = buildURLFromInputs("Detroit");
+      let queryURL = buildURLFromInputs("San Diego");
       searchWeather(queryURL);
     }
   }
