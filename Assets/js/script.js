@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-var apiKey = 'e5f8c29eda1bbcc8fecf3d7df7662e65'
+var apiKey = '83abb9bd71a6d989fa143b8834121117'
 
 var cityEl = $('h2#city');
 var dateEl = $('h3#date');
@@ -14,3 +14,18 @@ var cityListEl = $('div.cityList');
 var cityInput = $('#city-input');
 
 let previousCities = [];
+
+function compare(a, b) {
+    // Use toUpperCase() to ignore character casing
+    const cityA = a.city.toUpperCase();
+    const cityB = b.city.toUpperCase();
+
+    let comparison = 0;
+    if (cityA > cityB) {
+        comparison = 1;
+    } else if (cityA < cityB) {
+        comparison = -1;
+    }
+    return comparison;
+}
+
